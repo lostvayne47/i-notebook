@@ -1,11 +1,10 @@
 import express from "express";
 import UserSchema from "../models/User.js";
 import { body, validationResult } from "express-validator";
-import User from "../models/User.js";
 
 const authRouter = express.Router();
 
-//Create a User using POST "/api/auth" . Doesn't require Auth No Login Required
+//Create a User using POST "/api/auth/createuser" . Doesn't require Auth No Login Required
 
 authRouter.post(
   "/createuser",
@@ -23,14 +22,14 @@ authRouter.post(
       return res.status(400).json({ errors: errors.array() });
     }
     try {
-      let user = await User.findOne({ email: req.body.email });
+      let user = await UserSchema.findOne({ email: req.body.email });
       if (user) {
         // Duplicate key error
         return res.status(400).json({
           error: "Email already exists",
         });
       } else {
-        user = await User.create({
+        user = await UserSchema.create({
           name: req.body.name,
           email: req.body.email,
           password: req.body.password,
