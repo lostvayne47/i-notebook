@@ -3,11 +3,13 @@ import UserSchema from "../models/User.js";
 import { body, validationResult } from "express-validator";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import fetchUser from "../middleware/fetchUser.js";
+
 const authRouter = express.Router();
 
 const JWT_SECRET = "AAYUSH_IS_THE_BEST";
 
-//Create a User using POST "/api/auth/createuser" . Doesn't require Auth No Login Required
+//Route 1: Create a User using POST "/api/auth/createuser" . Doesn't require Auth No Login Required
 
 authRouter.post(
   "/createuser",
@@ -60,5 +62,67 @@ authRouter.post(
     }
   }
 );
+
+// Route 2: Authenticate a User using POST "/api/auth/login" . Doesn't require Auth No Login Required
+
+authRouter.post(
+  "/login",
+  [
+    body("email", "Enter a valid email").isEmail(),
+    body("password", "Password cannot be blank").exists(),
+  ],
+  async (req, res) => {
+    //If there are errors return bad request and the errors
+    const errors = validationResult(req);
+    if (!errors.isEmpty()) {
+      return res.status(400).json({ errors: errors.array() });
+    }
+    try {
+      const { email, password } = req.body;
+      let user = await UserSchema.findOne({ email });
+
+      if (!user) {
+        return res.status(400).json({
+          error: "Please try to login with correct credentials",
+        });
+      }
+      const passwordCompare = await bcrypt.compare(password, user.password);
+
+      if (!passwordCompare) {
+        return res.status(400).json({
+          error: "Please try to login with correct credentials",
+        });
+      } else {
+        const data = {
+          user: {
+            id: user.id,
+          },
+        };
+        const authToken = jwt.sign(data, JWT_SECRET);
+        res.json({ authToken: authToken });
+      }
+    } catch (error) {
+      return res.status(500).json({
+        error: "Server error",
+        message: error.message,
+      });
+    }
+  }
+);
+
+// Route 3: Get Logged in User Details using POST "/api/auth/getuser".Login Required
+
+authRouter.post("/getuser", fetchUser, async (req, res) => {
+  try {
+    const userId = req.user.id;
+    const userDetails = await UserSchema.findById(userId).select("-password");
+    res.send(userDetails);
+  } catch (error) {
+    return res.status(500).json({
+      error: "Server error",
+      message: error.message,
+    });
+  }
+});
 
 export default authRouter;
