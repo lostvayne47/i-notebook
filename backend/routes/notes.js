@@ -82,4 +82,28 @@ notesRouter.put("/updatenote/:id", fetchUser, async (req, res) => {
     });
   }
 });
+
+//Route 4: Update note using PUT. api/notes/deletenote/:id Login Required
+notesRouter.put("/deletenote/:id", fetchUser, async (req, res) => {
+  try {
+    //Find Note to be updated
+    let note = await Note.findById(req.params.id);
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+    // Check if the logged-in user owns the note
+    if (note.user?.toString() !== req.user.id) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    const deletedNote = await Note.findByIdAndDelete(req.params.id);
+
+    res.json({ "Deleted Note": deletedNote });
+  } catch (error) {
+    return res.status(500).json({
+      error: "Server error",
+      message: error.message,
+    });
+  }
+});
 export default notesRouter;
