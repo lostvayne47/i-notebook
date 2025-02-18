@@ -4,14 +4,13 @@ import fetchUser from "../middleware/fetchUser.js";
 import { body, validationResult } from "express-validator";
 
 const notesRouter = express.Router();
-//Route 1: Get all the notes. Login Required
+//Route 1: Get all the notes. api/notes/fetchallnotes  Login Required
 notesRouter.get("/fetchallnotes", fetchUser, async (req, res) => {
   const notes = await Note.find({ user: req.user.id });
   res.json(notes);
 });
 
-//Route 2: Add note. Login Required
-
+//Route 2: Add note. api/notes/addnote Login Required
 notesRouter.post(
   "/addnote",
   fetchUser,
@@ -48,4 +47,39 @@ notesRouter.post(
     }
   }
 );
+
+//Route 3: Update note using PUT. api/notes/updatenote/:id Login Required
+notesRouter.put("/updatenote/:id", fetchUser, async (req, res) => {
+  try {
+    const { title, description, tag } = req.body;
+    //Create a new note object
+
+    const updatedNote = {};
+    if (title) updatedNote.title = title;
+    if (description) updatedNote.description = description;
+    if (tag) updatedNote.tag = tag;
+
+    //Find Note to be updated
+    let note = await Note.findById(req.params.id);
+    if (!note) {
+      return res.status(404).json({ message: "Note not found" });
+    }
+    // Check if the logged-in user owns the note
+    if (note.user?.toString() !== req.user.id) {
+      return res.status(403).json({ message: "Not authorized" });
+    }
+
+    note = await Note.findByIdAndUpdate(
+      req.params.id,
+      { $set: updatedNote },
+      { new: true }
+    );
+    res.json({ note });
+  } catch (error) {
+    return res.status(500).json({
+      error: "Server error",
+      message: error.message,
+    });
+  }
+});
 export default notesRouter;
