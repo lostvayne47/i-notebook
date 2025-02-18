@@ -4,13 +4,13 @@ import fetchUser from "../middleware/fetchUser.js";
 import { body, validationResult } from "express-validator";
 
 const notesRouter = express.Router();
-//Route 1: Get all the notes. api/notes/fetchallnotes  Login Required
+//Route 1: Get all the notes using GET. api/notes/fetchallnotes  Login Required
 notesRouter.get("/fetchallnotes", fetchUser, async (req, res) => {
   const notes = await Note.find({ user: req.user.id });
   res.json(notes);
 });
 
-//Route 2: Add note. api/notes/addnote Login Required
+//Route 2: Add note using POST. api/notes/addnote Login Required
 notesRouter.post(
   "/addnote",
   fetchUser,
