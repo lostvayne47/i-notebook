@@ -83,10 +83,10 @@ notesRouter.put("/updatenote/:id", fetchUser, async (req, res) => {
   }
 });
 
-//Route 4: Delete note using PUT. api/notes/deletenote/:id Login Required
-notesRouter.put("/deletenote/:id", fetchUser, async (req, res) => {
+//Route 4: Delete note using DELETE. api/notes/deletenote/:id Login Required
+notesRouter.delete("/deletenote/:id", fetchUser, async (req, res) => {
   try {
-    //Find Note to be updated
+    //Find Note to be deleted
     let note = await Note.findById(req.params.id);
     if (!note) {
       return res.status(404).json({ message: "Note not found" });
@@ -98,7 +98,7 @@ notesRouter.put("/deletenote/:id", fetchUser, async (req, res) => {
 
     const deletedNote = await Note.findByIdAndDelete(req.params.id);
 
-    res.json({ "Deleted Note": deletedNote });
+    res.json({ Success: "Note has been deleted", "Deleted Note": deletedNote });
   } catch (error) {
     return res.status(500).json({
       error: "Server error",
