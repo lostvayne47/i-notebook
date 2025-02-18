@@ -83,7 +83,7 @@ notesRouter.put("/updatenote/:id", fetchUser, async (req, res) => {
   }
 });
 
-//Route 4: Update note using PUT. api/notes/deletenote/:id Login Required
+//Route 4: Delete note using PUT. api/notes/deletenote/:id Login Required
 notesRouter.put("/deletenote/:id", fetchUser, async (req, res) => {
   try {
     //Find Note to be updated
