@@ -29,7 +29,7 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
-                    location.pathname == "/" ? "active" : ""
+                    location.pathname === "/" ? "active" : ""
                   }`}
                   aria-current="page"
                   to="/"
@@ -40,7 +40,7 @@ export default function Navbar() {
               <li className="nav-item">
                 <Link
                   className={`nav-link ${
-                    location.pathname == "/about" ? "active" : ""
+                    location.pathname === "/about" ? "active" : ""
                   }`}
                   to="/about"
                 >

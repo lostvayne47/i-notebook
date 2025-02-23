@@ -1,4 +1,5 @@
 import React from "react";
+import Notes from "./Notes";
 
 export default function Home() {
   return (
@@ -43,7 +44,9 @@ export default function Home() {
           Submit
         </button>
       </form>
-      <h2>Your Notes</h2>
+      <div>
+        <Notes></Notes>
+      </div>
     </div>
   );
 }
