@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
-
-export default function AddNote({ addNote }) {
+import NoteContext from "../context/notes/NoteContext";
+export default function AddNote() {
+  const { addNote } = useContext(NoteContext);
   const [note, setNote] = useState({
     title: "title",
     desc: "description",

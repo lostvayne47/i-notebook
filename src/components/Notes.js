@@ -5,11 +5,11 @@ import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
 
 export default function Notes() {
-  const { notes, addNote, editNote, deleteNote } = useContext(NoteContext);
+  const { notes } = useContext(NoteContext);
 
   return (
     <>
-      <AddNote addNote={addNote} />
+      <AddNote />
       <div className="row my-3">
         <h2>Your Notes</h2>
         {notes.map((note) => {
