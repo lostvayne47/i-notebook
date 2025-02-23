@@ -5,12 +5,14 @@ import About from "./components/About.js";
 import NoteState from "./context/notes/NoteState.js";
 
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Alert from "./components/Alert.js";
 function App() {
   return (
     <>
       <NoteState>
         <BrowserRouter>
           <Navbar />
+          <Alert message={"Amazing!"} />
           <div className="container">
             <Routes>
               <Route exact path="/" element={<Home />}></Route>
