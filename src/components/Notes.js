@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect } from "react";
 import { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";

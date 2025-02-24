@@ -1,22 +1,25 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useState } from "react";
 import NoteContext from "../context/notes/NoteContext";
-import Modal from "../components/Modal.js";
+import Modal from "./Modal.js";
+
 export default function NoteItem({ note }) {
-  const { deleteNote, editNote } = useContext(NoteContext);
-  const ref = useRef(null);
+  const { deleteNote } = useContext(NoteContext);
+
   const handleEdit = (note) => {
-    console.log("editing note " + note._id);
+    console.log("Editing note " + note._id);
+    handleShow();
   };
   const handleDelete = (id) => {
     console.log(id);
     deleteNote(id);
   };
+  const [show, setShow] = useState(false);
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   return (
     <>
-      <div
-        className="col-md-3 mx-2"
-        style={{ minHeight: "10rem", padding: "10px" }}
-      >
+      <div className="col-md-3" style={{ minHeight: "10rem", padding: "10px" }}>
         <div className="card my-1" style={{ height: "100%" }}>
           <div className="card-body">
             <h5 className="card-title">{note.title}</h5>
@@ -30,8 +33,6 @@ export default function NoteItem({ note }) {
             >
               <i
                 className="fa-solid fa-edit mx-2"
-                data-bs-toggle="modal"
-                data-bs-target="#exampleModal"
                 onClick={() => handleEdit(note)}
               ></i>
               <i
@@ -41,8 +42,15 @@ export default function NoteItem({ note }) {
             </div>
           </div>
         </div>
+        {
+          <Modal
+            note={note}
+            show={show}
+            handleShow={handleShow}
+            handleClose={handleClose}
+          />
+        }
       </div>
-      {<Modal note={note} />}
     </>
   );
 }
