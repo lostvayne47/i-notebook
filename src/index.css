@@ -15,3 +15,27 @@ code {
 i {
   cursor: pointer;
 }
+
+.tag {
+  border-radius: 10px;
+  padding: 5px;
+  font-size: small;
+  width: 5rem;
+  text-align: center;
+}
+.personal-tag {
+  color: #ffffff;
+  background-color: #ff5733;
+}
+.work-tag {
+  color: #ffffff;
+  background-color: #1bac1b;
+}
+.sport-tag {
+  color: #ffffff;
+  background-color: #8e44ad;
+}
+.other-tag {
+  color: #ffffff;
+  background-color: #df4de4;
+}
