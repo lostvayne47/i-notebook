@@ -5,7 +5,7 @@ export default function AddNote() {
   const { addNote } = useContext(NoteContext);
   const [note, setNote] = useState({
     title: "title",
-    desc: "description",
+    description: "description",
     tag: "personal",
   });
   const handleClick = (e) => {
@@ -31,6 +31,7 @@ export default function AddNote() {
             name="title"
             aria-describedby="titleHelp"
             onChange={onChange}
+            minLength={1}
           />
         </div>
         <div className="mb-3">
@@ -42,6 +43,7 @@ export default function AddNote() {
             id="description"
             className="form-control"
             onChange={onChange}
+            minLength={1}
           />
         </div>
         <div className="mb-3">
