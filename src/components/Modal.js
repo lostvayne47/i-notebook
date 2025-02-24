@@ -13,6 +13,7 @@ export default function MyModal({ note, show, handleClose }) {
   };
   const onSave = (e) => {
     updateNote(editNote.id, editNote.title, editNote.description, editNote.tag);
+    handleClose();
   };
 
   useEffect(() => {

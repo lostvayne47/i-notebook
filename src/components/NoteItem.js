@@ -10,7 +10,6 @@ export default function NoteItem({ note }) {
     handleShow();
   };
   const handleDelete = (id) => {
-    console.log(id);
     deleteNote(id);
   };
   const [show, setShow] = useState(false);
