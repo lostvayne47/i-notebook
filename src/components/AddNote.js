@@ -11,6 +11,7 @@ export default function AddNote() {
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
+    setNote({ title: "title", description: "description", tag: "personal" });
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -32,6 +33,7 @@ export default function AddNote() {
             aria-describedby="titleHelp"
             onChange={onChange}
             minLength={1}
+            placeholder="Title"
           />
         </div>
         <div className="mb-3">
@@ -44,6 +46,7 @@ export default function AddNote() {
             className="form-control"
             onChange={onChange}
             minLength={1}
+            placeholder="Description"
           />
         </div>
         <div className="mb-3">

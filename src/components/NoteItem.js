@@ -6,7 +6,7 @@ export default function NoteItem({ note }) {
   const { deleteNote } = useContext(NoteContext);
 
   const handleEdit = (note) => {
-    console.log("Editing note " + note._id);
+    // console.log("Editing note " + note._id);
     handleShow();
   };
   const handleDelete = (id) => {
