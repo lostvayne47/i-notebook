@@ -29,8 +29,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
     try {
       console.log("Adding a new note");
-      //TODO: API CALL
-      await fetch(`${host}/api/notes/addnote`, {
+      const response = await fetch(`${host}/api/notes/addnote`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -39,17 +38,8 @@ const NoteState = (props) => {
         },
         body: JSON.stringify({ title, description, tag }),
       });
-
-      const newNote = {
-        _id: "67b462196cc4285c4d50de6f",
-        user: "67b08f397c5267b620e1c5c0",
-        title: title,
-        description: description,
-        tag: tag,
-        date: Date.now(),
-        __v: 0,
-      };
-      setNotes(notes.concat(newNote));
+      const note = await response.json();
+      setNotes(notes.concat(note));
     } catch (error) {
       console.log(error.message);
     }
