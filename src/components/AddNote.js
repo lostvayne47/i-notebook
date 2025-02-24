@@ -45,17 +45,18 @@ export default function AddNote() {
           />
         </div>
         <div className="mb-3">
-          <label htmlFor="tag" className="form-label">
-            Tag
-          </label>
-          <input
-            type="text"
-            name="tag"
+          <label htmlFor="tag">Choose a tag</label>
+          <select
+            className="form-select"
             id="tag"
-            className="form-control"
-            placeholder="Personal"
+            name="tag"
             onChange={onChange}
-          />
+          >
+            <option value="personal">Personal</option>
+            <option value="work">Work</option>
+            <option value="sport">Sport</option>
+            <option value="other">Other</option>
+          </select>
         </div>
         <button type="submit" className="btn btn-primary" onClick={handleClick}>
           Add Note
