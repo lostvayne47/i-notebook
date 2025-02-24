@@ -10,19 +10,30 @@ export default function NoteItem({ note }) {
     deleteNote(id);
   };
   return (
-    <div className="col-md-3">
-      <div className="card my-1">
+    <div
+      className="col-md-3 mx-3"
+      style={{ backgroundColor: "aqua", minHeight: "10rem", padding: "10px" }}
+    >
+      <div className="card my-1" style={{ height: "100%" }}>
         <div className="card-body">
           <h5 className="card-title">{note.title}</h5>
           <p className="card-text">{note.description}</p>
-          <i
-            className="fa-solid fa-edit mx-2"
-            onClick={() => handleEdit(note._id)}
-          ></i>
-          <i
-            className="fa-solid fa-trash mx-2"
-            onClick={() => handleDelete(note._id)}
-          ></i>
+          <div
+            style={{
+              position: "absolute",
+              bottom: "0px",
+              padding: "5px",
+            }}
+          >
+            <i
+              className="fa-solid fa-edit mx-2"
+              onClick={() => handleEdit(note._id)}
+            ></i>
+            <i
+              className="fa-solid fa-trash mx-2"
+              onClick={() => handleDelete(note._id)}
+            ></i>
+          </div>
         </div>
       </div>
     </div>
