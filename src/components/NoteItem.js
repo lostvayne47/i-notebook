@@ -24,7 +24,7 @@ export default function NoteItem({ note }) {
             <h5 className="card-title d-flex justify-content-between align-items-center ">
               <div> {note.title}</div>
               <div className={`tag ${note.tag}-tag`}>
-                {note.tag.toUpperCase()}
+                {note.tag.toString().toUpperCase()}
               </div>
             </h5>
             <p className="card-text">{note.description}</p>

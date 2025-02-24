@@ -1,17 +1,18 @@
 import React, { useContext } from "react";
 import { useState } from "react";
 import NoteContext from "../context/notes/NoteContext";
+
 export default function AddNote() {
   const { addNote } = useContext(NoteContext);
   const [note, setNote] = useState({
-    title: "title",
-    description: "description",
+    title: "",
+    description: "",
     tag: "personal",
   });
   const handleClick = (e) => {
     e.preventDefault();
     addNote(note.title, note.description, note.tag);
-    setNote({ title: "title", description: "description", tag: "personal" });
+    //setNote({ title: "", description: "", tag: "personal" });
   };
   const onChange = (e) => {
     setNote({ ...note, [e.target.name]: e.target.value });
@@ -63,7 +64,14 @@ export default function AddNote() {
             <option value="other">Other</option>
           </select>
         </div>
-        <button type="submit" className="btn btn-primary" onClick={handleClick}>
+        <button
+          disabled={
+            note?.title?.length === 0 || note?.description?.length === 0
+          }
+          type="submit"
+          className="btn btn-primary"
+          onClick={handleClick}
+        >
           Add Note
         </button>
       </form>

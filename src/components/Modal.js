@@ -79,7 +79,14 @@ export default function MyModal({ note, show, handleClose }) {
           <Button variant="secondary" onClick={handleClose}>
             Close
           </Button>
-          <Button variant="primary" onClick={onSave}>
+          <Button
+            variant="primary"
+            disabled={
+              editNote?.title?.length === 0 ||
+              editNote?.description?.length === 0
+            }
+            onClick={onSave}
+          >
             Save Changes
           </Button>
         </Modal.Footer>
