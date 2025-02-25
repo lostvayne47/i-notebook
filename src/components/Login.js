@@ -71,7 +71,7 @@ export default function Login({ showAlert }) {
             name="password"
             onChange={onChange}
             value={credentials.password}
-            autoComplete="password"
+            autoComplete="current-password"
           />
         </div>
         {/* <div className="mb-3 form-check">
