@@ -33,9 +33,8 @@ export default function Login() {
       localStorage.setItem("authToken", json.authToken);
       navigate("/notes");
     } else {
-      alert("Invalid Credentials");
+      alert(json.error);
     }
-    console.log(json);
   };
   return (
     <div className="container">
