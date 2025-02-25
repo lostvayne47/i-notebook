@@ -16,7 +16,7 @@ function App() {
         <BrowserRouter>
           <Navbar />
           <Alert message={"Amazing!"} />
-          <div className="container">
+          <div>
             <Routes>
               <Route exact path="/" element={<Landing />}></Route>
               <Route exact path="/notes" element={<Home />}></Route>
