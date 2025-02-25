@@ -59,7 +59,7 @@ export default function Signup({ showAlert }) {
                 required
                 onChange={onChange}
                 value={credentials.name}
-                autoComplete="username"
+                autoComplete="name"
               />
             </p>
             <p>
@@ -85,7 +85,7 @@ export default function Signup({ showAlert }) {
                 required
                 onChange={onChange}
                 value={credentials.password}
-                autoComplete="password"
+                autoComplete="current-password"
               />
             </p>
             <p>
