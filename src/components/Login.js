@@ -40,9 +40,7 @@ export default function Login() {
   return (
     <div className="container login">
       <label htmlFor="login">
-        <p>
-          <h1>Please Login</h1>
-        </p>
+        <h1>Please Login</h1>
       </label>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">

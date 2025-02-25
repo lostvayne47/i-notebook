@@ -25,7 +25,12 @@ authRouter.post(
     //If there are errors return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({
+        error: errors
+          .array()
+          .map((e) => e.msg)
+          .join(" "),
+      });
     }
     try {
       //Check if user exists already
@@ -78,7 +83,12 @@ authRouter.post(
     //If there are errors return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({
+        error: errors
+          .array()
+          .map((e) => e.msg)
+          .join(" "),
+      });
     }
     try {
       const { email, password } = req.body;
