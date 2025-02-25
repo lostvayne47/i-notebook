@@ -33,7 +33,7 @@ export default function AddNote() {
             name="title"
             aria-describedby="titleHelp"
             onChange={onChange}
-            minLength={1}
+            minLength={5}
             placeholder="Title"
           />
         </div>
@@ -46,7 +46,7 @@ export default function AddNote() {
             id="description"
             className="form-control"
             onChange={onChange}
-            minLength={1}
+            minLength={5}
             placeholder="Description"
             rows={"10"}
           />
@@ -66,9 +66,7 @@ export default function AddNote() {
           </select>
         </div>
         <button
-          disabled={
-            note?.title?.length === 0 || note?.description?.length === 0
-          }
+          disabled={note?.title?.length < 6 || note?.description?.length < 6}
           type="submit"
           className="btn btn-primary"
           onClick={handleClick}
