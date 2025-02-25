@@ -3,7 +3,7 @@ import { useContext } from "react";
 import NoteContext from "../context/notes/NoteContext";
 import NoteItem from "./NoteItem";
 import AddNote from "./AddNote";
-
+import { useNavigate } from "react-router-dom";
 export default function Notes() {
   const { notes, getNotes } = useContext(NoteContext);
 
@@ -11,6 +11,13 @@ export default function Notes() {
     getNotes();
     // eslint-disable-next-line
   }, []);
+
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/");
+    }
+  });
 
   return (
     <>

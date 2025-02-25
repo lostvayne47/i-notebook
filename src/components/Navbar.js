@@ -1,7 +1,24 @@
-import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 export default function Navbar() {
   let location = useLocation();
+  const navigate = useNavigate();
+  const [loggedStatus, setLoggedStatus] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      setLoggedStatus(true);
+      navigate("/notes");
+    } else {
+      setLoggedStatus(false);
+    }
+  }, [navigate]);
+
+  const handleLogout = () => {
+    setLoggedStatus(false);
+    navigate("/");
+    localStorage.removeItem("authToken");
+  };
   return (
     <>
       <nav
@@ -48,11 +65,30 @@ export default function Navbar() {
               </li>
             </ul>
             <form className="d-flex gap-3">
-              <Link className="btn btn-primary" to="/login" role="button">
+              <Link
+                hidden={loggedStatus}
+                className="btn btn-primary"
+                to={loggedStatus ? "#" : "/login"}
+                role="button"
+              >
                 Login
               </Link>
-              <Link className="btn btn-primary" to="/signup" role="button">
+              <Link
+                hidden={loggedStatus}
+                className="btn btn-primary"
+                to={loggedStatus ? "#" : "/signup"}
+                role="button"
+              >
                 Signup
+              </Link>
+              <Link
+                hidden={!loggedStatus}
+                className="btn btn-primary"
+                to="/"
+                role="button"
+                onClick={handleLogout}
+              >
+                Logout
               </Link>
             </form>
           </div>
