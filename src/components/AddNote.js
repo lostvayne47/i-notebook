@@ -48,6 +48,7 @@ export default function AddNote() {
             onChange={onChange}
             minLength={1}
             placeholder="Description"
+            rows={"10"}
           />
         </div>
         <div className="mb-3">

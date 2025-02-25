@@ -40,7 +40,7 @@ export default function Signup() {
     }
   };
   return (
-    <div className="outer-box">
+    <div className="signup outer-box">
       <div className="inner-box">
         <header className="signup-header">
           <h1>Signup</h1>
@@ -109,8 +109,6 @@ export default function Signup() {
           </p>
         </footer>
       </div>
-      <div className="circle c1"></div>
-      <div className="circle c2"></div>
     </div>
   );
 }

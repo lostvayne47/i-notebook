@@ -28,7 +28,7 @@ export default function MyModal({ note, show, handleClose }) {
     <>
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
+          <Modal.Title>Edit Note</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <form>
@@ -56,6 +56,7 @@ export default function MyModal({ note, show, handleClose }) {
                 className="form-control"
                 onChange={onChange}
                 value={editNote.description}
+                rows={"10"}
               />
             </div>
             <div className="mb-3">

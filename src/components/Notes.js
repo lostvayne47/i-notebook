@@ -22,7 +22,7 @@ export default function Notes() {
   return (
     <>
       <AddNote />
-      <div className="row my-3">
+      <div className=" container row my-3">
         <h2>Your Notes</h2>
         {notes.length === 0 && (
           <div className="container d-flex justify-content-center align-items-center">
