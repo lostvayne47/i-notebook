@@ -21,18 +21,17 @@
   box-shadow: 5px 5px 10px #07070733;
   z-index: 2;
   backdrop-filter: blur(8px);
-  background: linear-gradient(to left top, #ff9a9e, #fad0c4);
+  background: linear-gradient(to left top, #73d5f0, #072d5c);
 }
-
 .signup-header h1 {
   font-size: 2.5rem;
-  color: #212121;
+  color: white;
 }
 
 .signup-header p {
   font-size: 0.9rem;
   font-weight: 400;
-  color: #555;
+  color: white;
 }
 
 .signup-body {
@@ -88,16 +87,16 @@
 }
 
 .signup-footer p {
-  color: #555;
+  color: white;
   text-align: center;
 }
 
 .signup-footer p a {
-  color: #3498db;
+  color: white;
 }
 
 .signup-footer p a :visited {
-  color: #14496d;
+  color: #e445dc;
 }
 
 .circle {
