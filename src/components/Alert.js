@@ -1,15 +1,20 @@
 import React from "react";
 
-export default function Alert({ message }) {
+const Captalize = (word) => {
+  const lower = word.toString().toLowerCase();
+  return lower.charAt(0).toUpperCase() + lower.slice(1);
+};
+export default function Alert({ alert }) {
   return (
-    <div>
+    alert && (
       <div
-        className="alert alert-primary"
+        className={`alert alert-${alert.type} alert-dismissible fade show`}
         role="alert"
-        style={{ zIndex: "9999", margin: "0px" }}
       >
-        {message}
+        <span>
+          <strong>{Captalize(alert?.type)}</strong> {alert?.message}
+        </span>
       </div>
-    </div>
+    )
   );
 }

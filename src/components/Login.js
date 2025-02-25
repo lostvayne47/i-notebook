@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/css/login-style.css";
-export default function Login() {
+export default function Login({ showAlert }) {
   const host = "localhost:5000";
 
   const [credentials, setCredentials] = useState({
@@ -32,9 +32,10 @@ export default function Login() {
     if (json.success) {
       //save the auth token and redirect
       localStorage.setItem("authToken", json.authToken);
+      showAlert("Logged in successfully", "success");
       navigate("/notes");
     } else {
-      alert(json.error);
+      showAlert(json.error, "danger");
     }
   };
   return (

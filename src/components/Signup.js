@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../components/css/signup-style.css";
 
-export default function Signup() {
+export default function Signup({ showAlert }) {
   const host = "localhost:5000";
   const [credentials, setCredentials] = useState({
     name: "",
@@ -31,9 +31,10 @@ export default function Signup() {
       });
       const json = await response.json();
       if (json.success) {
+        showAlert("Account created successfully", "success");
         navigate("/login");
       } else {
-        alert(json.error);
+        showAlert(json.error, "danger");
       }
     } catch (error) {
       console.log(error.message);
