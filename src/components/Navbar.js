@@ -8,9 +8,6 @@ export default function Navbar() {
   useEffect(() => {
     if (localStorage.getItem("authToken")) {
       setLoggedStatus(true);
-      navigate("/notes");
-    } else {
-      setLoggedStatus(false);
     }
   }, [navigate]);
 
