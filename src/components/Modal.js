@@ -33,7 +33,7 @@ export default function MyModal({ note, show, handleClose }) {
         <Modal.Body>
           <form>
             <div className="mb-3">
-              <label htmlFor="title" className="form-label">
+              <label htmlFor="title" className="form-label text-dark">
                 Title
               </label>
               <input
@@ -47,7 +47,7 @@ export default function MyModal({ note, show, handleClose }) {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="description" className="form-label">
+              <label htmlFor="description" className="form-label text-dark">
                 Description
               </label>
               <textarea
@@ -60,7 +60,9 @@ export default function MyModal({ note, show, handleClose }) {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="tag">Choose a tag</label>
+              <label htmlFor="tag" className="text-dark">
+                Choose a tag
+              </label>
               <select
                 className="form-select"
                 id="tag"

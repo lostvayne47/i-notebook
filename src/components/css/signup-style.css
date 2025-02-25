@@ -4,7 +4,9 @@
   padding: 0;
   box-sizing: border-box;
 }
-
+label {
+  color: white;
+}
 .outer-box {
   display: flex;
   justify-content: center;

@@ -13,12 +13,24 @@ export default function Landing() {
     }
   }, [navigate]);
 
+  const style = {
+    background: "linear-gradient(to left top, #73d5f0, #072d5c)",
+    color: "white",
+    margin: "15% auto",
+    height: "50vh",
+    width: "50vw",
+    borderBottomLeftRadius: "100px",
+    borderTopRightRadius: "100px",
+  };
   return (
-    <div className="container-fluid bg-light min-vh-100 d-flex flex-column justify-content-center align-items-center text-center">
+    <div
+      className="container-fluid d-flex flex-column justify-content-center align-items-center text-center"
+      style={style}
+    >
       {/* Hero Section */}
       <main className="flex-grow-1 d-flex flex-column justify-content-center align-items-center mt-5">
-        <h2 className="display-4 fw-bold text-dark">Welcome to iNotebook</h2>
-        <p className="lead text-secondary">
+        <h2 className="display-4 fw-bold text-light">Welcome to iNotebook</h2>
+        <p className="lead">
           Discover amazing content and join our community. <br />
           By Logging in or signing up
         </p>

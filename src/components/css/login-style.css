@@ -10,3 +10,7 @@
   background: linear-gradient(to left top, #73d5f0, #072d5c);
   color: white;
 }
+
+label {
+  color: white;
+}

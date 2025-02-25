@@ -23,7 +23,7 @@ export default function Notes() {
     <>
       <AddNote />
       <div className=" container row my-3">
-        <h2>Your Notes</h2>
+        <h2 className="text-light">Your Notes</h2>
         {notes.length === 0 && (
           <div className="container d-flex justify-content-center align-items-center">
             <h2>No notes to display, add a Note!</h2>

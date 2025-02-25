@@ -21,7 +21,7 @@ export default function NoteItem({ note }) {
       <div className="col-md-3" style={{ minHeight: "10rem", padding: "10px" }}>
         <div className="card my-1" style={{ height: "100%" }}>
           <div className="card-body">
-            <h5 className="card-title d-flex justify-content-between align-items-center ">
+            <h5 className="card-title d-flex justify-content-between align-items-center     flex-wrap-reverse ">
               <div> {note.title}</div>
               <div className={`tag ${note.tag}-tag`}>
                 {note.tag.toString().toUpperCase()}

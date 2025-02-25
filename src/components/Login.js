@@ -58,9 +58,7 @@ export default function Login({ showAlert }) {
             value={credentials.email}
             autoComplete="email"
           />
-          <div id="emailHelp" className="form-text">
-            We'll never share your email with anyone else.
-          </div>
+          <label>We'll never share your email with anyone else.</label>
         </div>
         <div className="mb-3">
           <label htmlFor="password" className="form-label">
