@@ -52,6 +52,7 @@ export default function Login() {
             aria-describedby="emailHelp"
             onChange={onChange}
             value={credentials.email}
+            autoComplete="email"
           />
           <div id="emailHelp" className="form-text">
             We'll never share your email with anyone else.
@@ -68,9 +69,10 @@ export default function Login() {
             name="password"
             onChange={onChange}
             value={credentials.password}
+            autoComplete="password"
           />
         </div>
-        <div className="mb-3 form-check">
+        {/* <div className="mb-3 form-check">
           <input
             type="checkbox"
             className="form-check-input"
@@ -79,9 +81,9 @@ export default function Login() {
           <label className="form-check-label" htmlFor="exampleCheck1">
             Check me out
           </label>
-        </div>
+        </div> */}
         <button type="submit" className="btn btn-primary">
-          Submit
+          Log in
         </button>
       </form>
     </div>

@@ -57,23 +57,43 @@ body {
   display: block;
   font-weight: bold;
 }
-.signup-body p input {
+.signup-body p input,
+.signup-body p button {
   width: 100%;
   padding: 10px;
-  border: 2px solid #cccc;
+  border: 2px solid #ccc;
   border-radius: 6px;
   font-size: 1rem;
   margin-top: 4px;
+  cursor: pointer; /* Adds a pointer cursor for buttons */
 }
 
-.signup-body p input[type="submit"] {
+.signup-body p button {
+  background-color: #007bff; /* Adds a default button color */
+  color: white;
+  border-color: #007bff;
+}
+
+.signup-body p button:hover {
+  background-color: #0056b3; /* Darker shade for hover effect */
+  border-color: #0056b3;
+}
+.signup-body p button[type="submit"] {
   background-color: #3498db;
   border: none;
   color: white;
   cursor: pointer;
 }
 
-.signup-body p input[type="submit"]:hover {
+.signup-body p button:disabled {
+  background-color: #ccc; /* Gray out the button */
+  border-color: #ccc;
+  color: #666; /* Light gray text */
+  cursor: not-allowed; /* Show not-allowed cursor */
+  opacity: 0.6; /* Reduce visibility */
+}
+
+.signup-body p button[type="submit"]:hover {
   background-color: #14496d;
 }
 
@@ -98,10 +118,10 @@ body {
   position: absolute;
 }
 .c1 {
-  top: 100px;
+  top: 00px;
   left: 40px;
 }
 .c2 {
-  bottom: 200px;
+  bottom: 100px;
   right: 40px;
 }

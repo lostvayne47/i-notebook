@@ -21,6 +21,7 @@ authRouter.post(
     }),
   ],
   async (req, res) => {
+    const success = false;
     //If there are errors return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
@@ -31,6 +32,7 @@ authRouter.post(
       let user = await UserSchema.findOne({ email: req.body.email });
       if (user) {
         return res.status(400).json({
+          success,
           error: "Email already exists",
         });
       } else {
@@ -51,8 +53,8 @@ authRouter.post(
           },
         };
         const authToken = jwt.sign(data, JWT_SECRET);
-
-        res.json({ authToken: authToken });
+        success = true;
+        res.json({ success, authToken: authToken });
       }
     } catch (error) {
       return res.status(500).json({

@@ -1,57 +1,116 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../components/css/signup-style.css";
 
 export default function Signup() {
+  const host = "localhost:5000";
+  const [credentials, setCredentials] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+  const navigate = useNavigate();
+  const onChange = (e) => {
+    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch(`http://${host}/api/auth/createuser`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: credentials.name,
+          email: credentials.email,
+          password: credentials.password,
+        }),
+      });
+      const json = await response.json();
+      if (json.success) {
+        navigate("/login");
+      } else {
+        alert(json.error);
+      }
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
   return (
-    <div class="outer-box">
-      <div class="inner-box">
-        <header class="signup-header">
+    <div className="outer-box">
+      <div className="inner-box">
+        <header className="signup-header">
           <h1>Signup</h1>
           <p>It just takes 30 seconds</p>
         </header>
-        <main class="signup-body">
-          <form action="#" class="" id="signup-form">
+        <main className="signup-body">
+          <form onSubmit={handleSubmit} className="" id="signup-form">
             <p>
-              <label for="fullname">Full Name</label>
+              <label htmlFor="name">Full Name</label>
               <input
                 type="text"
-                id="fullname"
-                placeholder="Aayush Kamtikar"
+                id="name"
+                name="name"
+                placeholder="Enter your full name"
                 required
+                onChange={onChange}
+                value={credentials.name}
+                autoComplete="username"
               />
             </p>
             <p>
-              <label for="email">Email</label>
+              <label htmlFor="email">Email</label>
               <input
                 type="email"
                 id="email"
-                placeholder="aayushkamtikar@gmail.com"
+                name="email"
+                placeholder="johndoe@gmail.com"
                 required
+                onChange={onChange}
+                value={credentials.email}
+                autoComplete="email"
               />
             </p>
             <p>
-              <label for="password">Your New Passowrd</label>
+              <label htmlFor="password">Your New Passowrd</label>
               <input
                 type="password"
                 id="password"
+                name="password"
                 placeholder="Atleast 8 characters long"
                 required
+                onChange={onChange}
+                value={credentials.password}
+                autoComplete="password"
               />
             </p>
             <p>
-              <input type="submit" id="submit" value="Create an account" />
+              <button
+                disabled={
+                  credentials.email.name === 0 ||
+                  credentials.email.length === 0 ||
+                  credentials.password.length < 8
+                }
+                type="submit"
+                id="submit"
+              >
+                Create an account
+              </button>
             </p>
           </form>
         </main>
-        <footer class="signup-footer">
+        <footer className="signup-footer">
           <p>
             Already have an account?
-            <a href="#">Login</a>
+            <Link to="/login">Login</Link>
           </p>
         </footer>
       </div>
-      <div class="circle c1"></div>
-      <div class="circle c2"></div>
+      <div className="circle c1"></div>
+      <div className="circle c2"></div>
     </div>
   );
 }
