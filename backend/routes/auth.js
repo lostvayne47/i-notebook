@@ -21,7 +21,7 @@ authRouter.post(
     }),
   ],
   async (req, res) => {
-    const success = false;
+    let success = false;
     //If there are errors return bad request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
