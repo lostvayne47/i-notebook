@@ -16,6 +16,7 @@ const NoteState = (props) => {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("authToken"),
         },
+        mode: "cors",
       });
       const json = await response.json();
       //setNotes
@@ -35,6 +36,8 @@ const NoteState = (props) => {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("authToken"),
         },
+        mode: "cors",
+
         body: JSON.stringify({ title, description, tag }),
       });
       const note = await response.json();
@@ -54,6 +57,8 @@ const NoteState = (props) => {
           "Content-Type": "application/json",
           "auth-token": localStorage.getItem("authToken"),
         },
+        mode: "cors",
+
         body: JSON.stringify({ title, description, tag }),
       });
 
@@ -82,6 +87,7 @@ const NoteState = (props) => {
             "Content-Type": "application/json",
             "auth-token": localStorage.getItem("authToken"),
           },
+          mode: "cors",
         }
       );
       const json = await response.json();

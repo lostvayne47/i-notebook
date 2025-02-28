@@ -28,6 +28,7 @@ export default function Login({ showAlert }) {
         email: credentials.email,
         password: credentials.password,
       }),
+      mode: "cors",
     });
     const json = await response.json();
     if (json.success) {
