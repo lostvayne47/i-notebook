@@ -1,7 +1,7 @@
-import connectToMongo from "./db.js";
+import connectToMongo from "../db.js";
 import express from "express";
-import authRouter from "./routes/auth.js";
-import notesRouter from "./routes/notes.js";
+import authRouter from "../routes/auth.js";
+import notesRouter from "../routes/notes.js";
 import cors from "cors";
 connectToMongo();
 
