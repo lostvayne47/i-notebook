@@ -3,7 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "../components/css/signup-style.css";
 
 export default function Signup({ showAlert }) {
-  const host = "localhost:5000";
+  // const host = "localhost:5000";
+  const host = "https://i-notebook-pearl.vercel.app/";
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",

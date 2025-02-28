@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/css/login-style.css";
 export default function Login({ showAlert }) {
-  const host = "localhost:5000";
+  // const host = "localhost:5000";
+  const host = "https://i-notebook-pearl.vercel.app/";
 
   const [credentials, setCredentials] = useState({
     email: "",
