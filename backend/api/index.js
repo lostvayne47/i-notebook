@@ -8,9 +8,19 @@ connectToMongo();
 const app = express();
 const port = 5000;
 
+app.use(
+  cors({
+    origin: "https://lostvayne-inotebook.netlify.app", // Your frontend URL
+    methods: "GET, POST, PUT, DELETE, OPTIONS",
+    allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
+  })
+);
 app.use(express.json());
+app.get("/api/", (req, res) => {
+  res.json({ message: "API is working!" });
+});
 
-app.options(cors());
 //Available Routes
 app.use("/api/auth", authRouter);
 app.use("/api/notes", notesRouter);
