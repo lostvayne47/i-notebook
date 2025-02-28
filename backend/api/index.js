@@ -9,13 +9,6 @@ const app = express();
 const port = 5000;
 
 app.use(express.json());
-// app.use(
-//   cors({
-//     origin: "https://lostvayne-inotebook.netlify.app", // Allow only your frontend
-//     methods: "GET,POST,PUT,DELETE,OPTIONS",
-//     credentials: true,
-//   })
-// );
 
 app.options(cors());
 //Available Routes
