@@ -17,6 +17,7 @@ const NoteState = (props) => {
           "auth-token": localStorage.getItem("authToken"),
         },
         mode: "cors",
+        credentials: "include", // Add this if using authentication cookies
       });
       const json = await response.json();
       //setNotes
@@ -37,6 +38,7 @@ const NoteState = (props) => {
           "auth-token": localStorage.getItem("authToken"),
         },
         mode: "cors",
+        credentials: "include", // Add this if using authentication cookies
 
         body: JSON.stringify({ title, description, tag }),
       });
@@ -58,6 +60,7 @@ const NoteState = (props) => {
           "auth-token": localStorage.getItem("authToken"),
         },
         mode: "cors",
+        credentials: "include", // Add this if using authentication cookies
 
         body: JSON.stringify({ title, description, tag }),
       });
@@ -88,6 +91,7 @@ const NoteState = (props) => {
             "auth-token": localStorage.getItem("authToken"),
           },
           mode: "cors",
+          credentials: "include", // Add this if using authentication cookies
         }
       );
       const json = await response.json();

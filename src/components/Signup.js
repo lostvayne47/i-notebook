@@ -30,6 +30,7 @@ export default function Signup({ showAlert }) {
           password: credentials.password,
         }),
         mode: "cors",
+        credentials: "include", // Add this if using authentication cookies
       });
       const json = await response.json();
       if (json.success) {
