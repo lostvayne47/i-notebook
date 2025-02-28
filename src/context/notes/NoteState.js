@@ -3,7 +3,7 @@ import { useState } from "react";
 
 const NoteState = (props) => {
   // const host = "http://localhost:5000";
-  const host = "i-notebook-pearl.vercel.app";
+  const host = "i-notebook-backend-liard.vercel.app";
   const [notes, setNotes] = useState([]);
 
   //Get all notes
