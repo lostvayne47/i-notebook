@@ -15,7 +15,7 @@ app.use("/api/auth", authRouter);
 app.use("/api/notes", notesRouter);
 
 app.use("/", (req, res) => {
-  res.send("Hello World");
+  res.send("Welcome to iNotebook");
 });
 app.listen(port, () => {
   console.log(`iNotebook listening on port ${port}`);
