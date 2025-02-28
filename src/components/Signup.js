@@ -4,7 +4,7 @@ import "../components/css/signup-style.css";
 
 export default function Signup({ showAlert }) {
   // const host = "localhost:5000";
-  const host = "i-notebook-pearl.vercel.app/";
+  const host = "i-notebook-pearl.vercel.app";
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
