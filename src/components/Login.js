@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "../components/css/login-style.css";
 export default function Login({ showAlert }) {
   // const host = "localhost:5000";
-  const host = "https://i-notebook-pearl.vercel.app/";
+  const host = "i-notebook-pearl.vercel.app/";
 
   const [credentials, setCredentials] = useState({
     email: "",
@@ -19,7 +19,7 @@ export default function Login({ showAlert }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`http://${host}/api/auth/login`, {
+    const response = await fetch(`https://${host}/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

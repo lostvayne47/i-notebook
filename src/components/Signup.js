@@ -4,7 +4,7 @@ import "../components/css/signup-style.css";
 
 export default function Signup({ showAlert }) {
   // const host = "localhost:5000";
-  const host = "https://i-notebook-pearl.vercel.app/";
+  const host = "i-notebook-pearl.vercel.app/";
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -19,7 +19,7 @@ export default function Signup({ showAlert }) {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://${host}/api/auth/createuser`, {
+      const response = await fetch(`https://${host}/api/auth/createuser`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

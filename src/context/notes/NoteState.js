@@ -3,14 +3,14 @@ import { useState } from "react";
 
 const NoteState = (props) => {
   // const host = "http://localhost:5000";
-  const host = "https://i-notebook-pearl.vercel.app/";
+  const host = "i-notebook-pearl.vercel.app/";
   const [notes, setNotes] = useState([]);
 
   //Get all notes
   const getNotes = async () => {
     try {
       // console.log("Getting all notes");
-      const response = await fetch(`${host}/api/notes/fetchallnotes`, {
+      const response = await fetch(`https://${host}/api/notes/fetchallnotes`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -29,7 +29,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
     try {
       // console.log("Adding a new note");
-      const response = await fetch(`${host}/api/notes/addnote`, {
+      const response = await fetch(`https://${host}/api/notes/addnote`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -48,7 +48,7 @@ const NoteState = (props) => {
   const updateNote = async (id, title, description, tag) => {
     try {
       // console.log(`Updating ${id}`);
-      await fetch(`${host}/api/notes/updatenote/${id}`, {
+      await fetch(`https://${host}/api/notes/updatenote/${id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -74,13 +74,16 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     try {
       // console.log("Deleteing note " + id);
-      const response = await fetch(`${host}/api/notes/deletenote/${id}`, {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-          "auth-token": localStorage.getItem("authToken"),
-        },
-      });
+      const response = await fetch(
+        `https://${host}/api/notes/deletenote/${id}`,
+        {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            "auth-token": localStorage.getItem("authToken"),
+          },
+        }
+      );
       const json = await response.json();
       console.log(json?.Success);
 
