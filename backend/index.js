@@ -1,18 +1,19 @@
-import connectToMongo from "../db.js";
+import connectToMongo from "./db.js";
 import express from "express";
-import authRouter from "../routes/auth.js";
-import notesRouter from "../routes/notes.js";
+import authRouter from "./routes/auth.js";
+import notesRouter from "./routes/notes.js";
 import cors from "cors";
 connectToMongo();
 
 const app = express();
 const port = 5000;
 
+// Enable CORS
 app.use(
   cors({
-    origin: "https://lostvayne-inotebook.netlify.app", // Your frontend URL
+    origin: "https://lostvayne-inotebook.netlify.app", // Update with your frontend URL
     methods: "GET, POST, PUT, DELETE, OPTIONS",
-    allowedHeaders: ["Content-Type", "Authorization"],
+    allowedHeaders: ["Content-Type", "auth-token"],
     credentials: true,
   })
 );
