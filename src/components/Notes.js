@@ -13,12 +13,12 @@ export default function Notes() {
     // eslint-disable-next-line
   }, []);
 
-  // const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (!localStorage.getItem("authToken")) {
-  //     navigate("/");
-  //   }
-  // });
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (!localStorage.getItem("authToken")) {
+      navigate("/");
+    }
+  });
 
   return (
     <>
