@@ -48,8 +48,9 @@ export default function MyModal({ note, show, handleClose }) {
                 onChange={onChange}
                 value={editNote.title}
               />
+              <sub className="text-dark">Please enter atleast 5 characters</sub>
             </div>
-            <sub className="text-dark">Please enter atleast 5 characters</sub>
+
             <div className="mb-3">
               <label
                 htmlFor="description"
@@ -65,8 +66,9 @@ export default function MyModal({ note, show, handleClose }) {
                 value={editNote.description}
                 rows={"10"}
               />
+              <sub className="text-dark">Please enter atleast 5 characters</sub>
             </div>
-            <sub className="text-dark">Please enter atleast 5 characters</sub>
+
             <div className="mb-3">
               <label htmlFor="tag" className="text-dark">
                 Choose a tag
