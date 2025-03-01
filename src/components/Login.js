@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "../components/css/login-style.css";
+import NoteContext from "../context/notes/NoteContext";
+import Loader from "./Loader.js";
+
 export default function Login({ showAlert }) {
   // const host = "localhost:5000";
   const host = "i-notebook-backend-liard.vercel.app";
@@ -9,6 +12,7 @@ export default function Login({ showAlert }) {
     email: "",
     password: "",
   });
+  const { loader, setLoader } = useContext(NoteContext);
 
   const onChange = (e) => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -20,6 +24,7 @@ export default function Login({ showAlert }) {
     e.preventDefault();
 
     try {
+      setLoader(true);
       const response = await fetch(`https://${host}/api/auth/login`, {
         method: "POST",
         headers: {
@@ -41,6 +46,7 @@ export default function Login({ showAlert }) {
       } else {
         showAlert(json.error, "danger");
       }
+      setLoader(false);
     } catch (e) {
       alert("Something went wrong");
       console.log(e.message);
@@ -92,9 +98,13 @@ export default function Login({ showAlert }) {
             Check me out
           </label>
         </div> */}
-        <button type="submit" className="btn btn-primary">
-          Log in
-        </button>
+        {loader ? (
+          <Loader />
+        ) : (
+          <button type="submit" className="btn btn-primary">
+            Log in
+          </button>
+        )}
       </form>
     </div>
   );

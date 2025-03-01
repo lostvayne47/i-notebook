@@ -5,11 +5,13 @@ const NoteState = (props) => {
   // const host = "http://localhost:5000";
   const host = "i-notebook-backend-liard.vercel.app";
   const [notes, setNotes] = useState([]);
+  const [loader, setLoader] = useState(false);
 
   //Get all notes
   const getNotes = async () => {
     try {
       // console.log("Getting all notes");
+      setLoader(true);
       const response = await fetch(`https://${host}/api/notes/fetchallnotes`, {
         method: "GET",
         headers: {
@@ -22,6 +24,7 @@ const NoteState = (props) => {
       const json = await response.json();
       //setNotes
       setNotes(json);
+      setLoader(false);
     } catch (e) {
       alert("Something went wrong!");
       console.log(e.message);
@@ -32,6 +35,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
     try {
       // console.log("Adding a new note");
+      setLoader(true);
       const response = await fetch(`https://${host}/api/notes/addnote`, {
         method: "POST",
         headers: {
@@ -45,6 +49,7 @@ const NoteState = (props) => {
       });
       const note = await response.json();
       setNotes(notes.concat(note));
+      setLoader(false);
     } catch (error) {
       alert("Something went wrong!");
       console.log(error.message);
@@ -55,6 +60,7 @@ const NoteState = (props) => {
   const updateNote = async (id, title, description, tag) => {
     try {
       // console.log(`Updating ${id}`);
+      setLoader(true);
       await fetch(`https://${host}/api/notes/updatenote/${id}`, {
         method: "PUT",
         headers: {
@@ -75,6 +81,7 @@ const NoteState = (props) => {
             : note
         )
       );
+      setLoader(false);
     } catch (error) {
       alert("Something went wrong!");
       console.log(error.message);
@@ -85,6 +92,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     try {
       // console.log("Deleteing note " + id);
+      setLoader(true);
       const response = await fetch(
         `https://${host}/api/notes/deletenote/${id}`,
         {
@@ -102,6 +110,7 @@ const NoteState = (props) => {
 
       const newNotes = notes.filter((note) => note._id !== id);
       setNotes(newNotes);
+      setLoader(false);
     } catch (error) {
       alert("Something went wrong!");
       console.log(error.message);
@@ -110,7 +119,15 @@ const NoteState = (props) => {
 
   return (
     <NoteContext.Provider
-      value={{ notes, getNotes, addNote, updateNote, deleteNote }}
+      value={{
+        notes,
+        loader,
+        setLoader,
+        getNotes,
+        addNote,
+        updateNote,
+        deleteNote,
+      }}
     >
       {props.children}
     </NoteContext.Provider>

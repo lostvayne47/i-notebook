@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "../components/css/signup-style.css";
+import NoteContext from "../context/notes/NoteContext";
+import Loader from "./Loader";
 
 export default function Signup({ showAlert }) {
   // const host = "localhost:5000";
   const host = "i-notebook-backend-liard.vercel.app";
+  const { loader, setLoader } = useContext(NoteContext);
   const [credentials, setCredentials] = useState({
     name: "",
     email: "",
@@ -19,6 +22,7 @@ export default function Signup({ showAlert }) {
     e.preventDefault();
 
     try {
+      setLoader(true);
       const response = await fetch(`https://${host}/api/auth/createuser`, {
         method: "POST",
         headers: {
@@ -39,6 +43,7 @@ export default function Signup({ showAlert }) {
       } else {
         showAlert(json.error, "danger");
       }
+      setLoader(false);
     } catch (error) {
       alert("Something went wrong");
       console.log(e.message);
@@ -99,17 +104,21 @@ export default function Signup({ showAlert }) {
               />
             </p>
             <p>
-              <button
-                disabled={
-                  credentials.email.name === 0 ||
-                  credentials.email.length === 0 ||
-                  credentials.password.length < 8
-                }
-                type="submit"
-                id="submit"
-              >
-                Create an account
-              </button>
+              {loader ? (
+                <Loader />
+              ) : (
+                <button
+                  disabled={
+                    credentials.email.name === 0 ||
+                    credentials.email.length === 0 ||
+                    credentials.password.length < 8
+                  }
+                  type="submit"
+                  id="submit"
+                >
+                  Create an account
+                </button>
+              )}
             </p>
           </form>
         </main>

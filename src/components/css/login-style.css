@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-
   flex-direction: column;
   border-radius: 20px;
   padding: 30px;
@@ -28,7 +27,7 @@ label {
 
 /* Change styles for screens larger than 1200px (desktops) */
 @media screen and (min-width: 1200px) {
-  .example-class {
+  .login {
     width: 40vw;
     margin: 15% auto;
   }
