@@ -14,6 +14,10 @@ label {
   color: white;
 }
 
+.required-field::after {
+  content: "*";
+  color: red;
+}
 /* Change styles for screens smaller than 768px (tablets & mobiles) */
 @media screen and (max-width: 768px) {
   .login {

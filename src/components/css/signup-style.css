@@ -116,3 +116,8 @@ label {
   bottom: 100px;
   right: 40px;
 }
+
+.required-field::after {
+  content: "*";
+  color: red;
+}

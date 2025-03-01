@@ -19,26 +19,31 @@ export default function Login({ showAlert }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`https://${host}/api/auth/login`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        email: credentials.email,
-        password: credentials.password,
-      }),
-      mode: "cors",
-      credentials: "include", // Add this if using authentication cookies
-    });
-    const json = await response.json();
-    if (json.success) {
-      //save the auth token and redirect
-      localStorage.setItem("authToken", json.authToken);
-      showAlert("Logged in successfully", "success");
-      navigate("/notes");
-    } else {
-      showAlert(json.error, "danger");
+    try {
+      const response = await fetch(`https://${host}/api/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email: credentials.email,
+          password: credentials.password,
+        }),
+        mode: "cors",
+        credentials: "include", // Add this if using authentication cookies
+      });
+      const json = await response.json();
+      if (json.success) {
+        //save the auth token and redirect
+        localStorage.setItem("authToken", json.authToken);
+        showAlert("Logged in successfully", "success");
+        navigate("/notes");
+      } else {
+        showAlert(json.error, "danger");
+      }
+    } catch (e) {
+      alert("Something went wrong");
+      console.log(e.message);
     }
   };
   return (

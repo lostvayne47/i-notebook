@@ -23,7 +23,7 @@ export default function AddNote() {
       <h2 className="text-light">Add a note</h2>
       <form>
         <div className="mb-3">
-          <label htmlFor="title" className="form-label">
+          <label htmlFor="title" className="form-label required-field">
             Title
           </label>
           <input
@@ -36,9 +36,10 @@ export default function AddNote() {
             minLength={5}
             placeholder="Title"
           />
+          <sub className="text-light">Please enter atleast 5 characters</sub>
         </div>
         <div className="mb-3">
-          <label htmlFor="description" className="form-label">
+          <label htmlFor="description" className="form-label required-field">
             Description
           </label>
           <textarea
@@ -50,6 +51,7 @@ export default function AddNote() {
             placeholder="Description"
             rows={"10"}
           />
+          <sub className="text-light">Please enter atleast 5 characters</sub>
         </div>
         <div className="mb-3">
           <label htmlFor="tag">Choose a tag</label>
@@ -66,7 +68,7 @@ export default function AddNote() {
           </select>
         </div>
         <button
-          disabled={note?.title?.length < 6 || note?.description?.length < 6}
+          disabled={note?.title?.length <= 5 || note?.description?.length <= 5}
           type="submit"
           className="btn btn-primary"
           onClick={handleClick}

@@ -12,12 +12,12 @@ export default function Notes() {
     // eslint-disable-next-line
   }, []);
 
-  const navigate = useNavigate();
-  useEffect(() => {
-    if (!localStorage.getItem("authToken")) {
-      navigate("/");
-    }
-  });
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   if (!localStorage.getItem("authToken")) {
+  //     navigate("/");
+  //   }
+  // });
 
   return (
     <>
@@ -25,7 +25,7 @@ export default function Notes() {
       <div className=" container row my-3">
         <h2 className="text-light">Your Notes</h2>
         {notes.length === 0 && (
-          <div className="container d-flex justify-content-center align-items-center">
+          <div className="container d-flex justify-content-center align-items-center text-light">
             <h2>No notes to display, add a Note!</h2>
           </div>
         )}

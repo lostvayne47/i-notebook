@@ -40,7 +40,8 @@ export default function Signup({ showAlert }) {
         showAlert(json.error, "danger");
       }
     } catch (error) {
-      console.log(error.message);
+      alert("Something went wrong");
+      console.log(e.message);
     }
   };
   return (
@@ -53,7 +54,9 @@ export default function Signup({ showAlert }) {
         <main className="signup-body">
           <form onSubmit={handleSubmit} className="" id="signup-form">
             <p>
-              <label htmlFor="name">Full Name</label>
+              <label htmlFor="name" className="required-field">
+                Full Name
+              </label>
               <input
                 type="text"
                 id="name"
@@ -66,7 +69,9 @@ export default function Signup({ showAlert }) {
               />
             </p>
             <p>
-              <label htmlFor="email">Email</label>
+              <label htmlFor="email" className="required-field">
+                Email
+              </label>
               <input
                 type="email"
                 id="email"
@@ -79,7 +84,9 @@ export default function Signup({ showAlert }) {
               />
             </p>
             <p>
-              <label htmlFor="password">Your New Passowrd</label>
+              <label htmlFor="password" className="required-field">
+                Your New Passowrd
+              </label>
               <input
                 type="password"
                 id="password"

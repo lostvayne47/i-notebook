@@ -23,6 +23,7 @@ const NoteState = (props) => {
       //setNotes
       setNotes(json);
     } catch (e) {
+      alert("Something went wrong!");
       console.log(e.message);
     }
   };
@@ -45,6 +46,7 @@ const NoteState = (props) => {
       const note = await response.json();
       setNotes(notes.concat(note));
     } catch (error) {
+      alert("Something went wrong!");
       console.log(error.message);
     }
   };
@@ -74,6 +76,7 @@ const NoteState = (props) => {
         )
       );
     } catch (error) {
+      alert("Something went wrong!");
       console.log(error.message);
     }
   };
@@ -100,6 +103,7 @@ const NoteState = (props) => {
       const newNotes = notes.filter((note) => note._id !== id);
       setNotes(newNotes);
     } catch (error) {
+      alert("Something went wrong!");
       console.log(error.message);
     }
   };
