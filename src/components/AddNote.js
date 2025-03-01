@@ -3,7 +3,7 @@ import { useState } from "react";
 import NoteContext from "../context/notes/NoteContext";
 
 export default function AddNote() {
-  const { addNote } = useContext(NoteContext);
+  const { loader, addNote } = useContext(NoteContext);
   const [note, setNote] = useState({
     title: "",
     description: "",
@@ -68,7 +68,9 @@ export default function AddNote() {
           </select>
         </div>
         <button
-          disabled={note?.title?.length <= 5 || note?.description?.length <= 5}
+          disabled={
+            loader || note?.title?.length < 5 || note?.description?.length < 5
+          }
           type="submit"
           className="btn btn-primary"
           onClick={handleClick}
