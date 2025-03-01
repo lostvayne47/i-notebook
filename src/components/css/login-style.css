@@ -1,9 +1,8 @@
 .login {
-  width: 500px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 15% auto;
+
   flex-direction: column;
   border-radius: 20px;
   padding: 30px;
@@ -13,4 +12,20 @@
 
 label {
   color: white;
+}
+
+/* Change styles for screens smaller than 768px (tablets & mobiles) */
+@media screen and (max-width: 768px) {
+  .login {
+    width: 60vw;
+    margin: 30% auto;
+  }
+}
+
+/* Change styles for screens larger than 1200px (desktops) */
+@media screen and (min-width: 1200px) {
+  .example-class {
+    width: 40vw;
+    margin: 15% auto;
+  }
 }

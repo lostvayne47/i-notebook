@@ -18,13 +18,13 @@ export default function Landing() {
     color: "white",
     margin: "15% auto",
     height: "50vh",
-    width: "50vw",
+    width: "60vw",
     borderBottomLeftRadius: "100px",
     borderTopRightRadius: "100px",
   };
   return (
     <div
-      className="container-fluid d-flex flex-column justify-content-center align-items-center text-center"
+      className="container-fluid d-flex flex-column justify-content-center align-items-center text-center p-1"
       style={style}
     >
       {/* Hero Section */}
