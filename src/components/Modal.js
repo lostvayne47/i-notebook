@@ -4,7 +4,7 @@ import Modal from "react-bootstrap/Modal";
 import NoteContext from "../context/notes/NoteContext";
 
 export default function MyModal({ note, show, handleClose }) {
-  const { updateNote } = useContext(NoteContext);
+  const { loader, updateNote } = useContext(NoteContext);
 
   const [editNote, setEditNote] = useState({});
 
@@ -33,7 +33,10 @@ export default function MyModal({ note, show, handleClose }) {
         <Modal.Body>
           <form>
             <div className="mb-3">
-              <label htmlFor="title" className="form-label text-dark">
+              <label
+                htmlFor="title"
+                className="form-label text-dark required-field"
+              >
                 Title
               </label>
               <input
@@ -47,7 +50,10 @@ export default function MyModal({ note, show, handleClose }) {
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="description" className="form-label text-dark">
+              <label
+                htmlFor="description"
+                className="form-label text-dark required-field"
+              >
                 Description
               </label>
               <textarea
@@ -85,8 +91,9 @@ export default function MyModal({ note, show, handleClose }) {
           <Button
             variant="primary"
             disabled={
-              editNote?.title?.length === 0 ||
-              editNote?.description?.length === 0
+              loader ||
+              editNote?.title?.length < 5 ||
+              editNote?.description?.length < 5
             }
             onClick={onSave}
           >
