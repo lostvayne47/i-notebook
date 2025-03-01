@@ -49,6 +49,7 @@ export default function MyModal({ note, show, handleClose }) {
                 value={editNote.title}
               />
             </div>
+            <sub className="text-dark">Please enter atleast 5 characters</sub>
             <div className="mb-3">
               <label
                 htmlFor="description"
@@ -65,6 +66,7 @@ export default function MyModal({ note, show, handleClose }) {
                 rows={"10"}
               />
             </div>
+            <sub className="text-dark">Please enter atleast 5 characters</sub>
             <div className="mb-3">
               <label htmlFor="tag" className="text-dark">
                 Choose a tag
